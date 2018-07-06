@@ -19,6 +19,11 @@
     "ordered-imports": [
       false
     ],
+    "no-console": [
+      true,
+      "log",
+      "error"
+    ],
     "max-line-length": [
       true,
       150

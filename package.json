@@ -9,6 +9,7 @@
     "start:init": "ts-node -r tsconfig-paths/register src/main.ts",
     "start": "nodemon",
     "debug": "nodemon --config nodemon-debug.json",
+    "lint": "node_modules/tslint/bin/tslint --p ./",
     "mongo": "mongod --dbpath ~/data/db-test",
     "prestart:prod": "rm -rf dist && tsc",
     "start:prod": "node dist/main.js",

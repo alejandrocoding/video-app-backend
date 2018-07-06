@@ -14,6 +14,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
             synchronize: true,
         }),
     ],
-    exports: [],
+    exports: [MongoConnectionModule],
 })
 export class MongoConnectionModule { }
