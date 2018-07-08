@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
+
+const host = process.env.HOST || 'ds129051.mlab.com';
+const port = Number(process.env.PORT) || 29051;
+const username = process.env.USERDB || 'alexdb1';
+const password = process.env.PASSDB || 'alexdb1';
+const database = process.env.DBNAME || 'videoapp';
 
 @Module({
-    imports: [
-        TypeOrmModule.forRoot({
-            type: 'mongodb',
-            host: 'ds129051.mlab.com',
-            port: 29051,
-            username: 'alexdb1',
-            password: 'alexdb1',
-            database: 'videoapp',
-            entities: [__dirname + '/../**/*.entity.ts'],
-            synchronize: true,
-        }),
-    ],
+    imports: [MongooseModule.forRoot(`mongodb://${username}:${password}@${host}:${port}/${database}`)],
     exports: [MongoConnectionModule],
 })
 export class MongoConnectionModule { }

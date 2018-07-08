@@ -5,6 +5,6 @@ export class AppController{
 
   @Get()
   main() {
-    return `Hello World! -PORT: ${process.env.PORT} -ALEX:${process.env.ALEX}`;
+    return `Hello World!`;
   }
 }
