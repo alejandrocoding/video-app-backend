@@ -23,15 +23,13 @@ export class PermissionService {
     }
 
     async create(dto: CreatePermissionDTO): Promise<Permission> {
-        const role = new this.permissionModel();
-        role.name = dto.name;
+        const role = new this.permissionModel(dto);
         return await role.save();
     }
 
     async update(dto: UpdatePermissionDTO): Promise<Permission> {
         const id = dto.id;
-        const name = dto.name;
-        return await this.permissionModel.findByIdAndUpdate(id, { name }).exec();
+        return await this.permissionModel.findByIdAndUpdate(id , { ...dto }).exec();
     }
 
     async delete(id: string): Promise<Permission> {

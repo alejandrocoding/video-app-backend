@@ -24,18 +24,13 @@ export class RoleService {
     }
 
     async create(dto: CreateRoleDTO): Promise<Role> {
-        const role = new this.roleModel();
-        role.name = dto.name;
-        role.permissionsId = dto.permissions;
-        role.createdBy = dto.createdBy;
+        const role = new this.roleModel(dto);
         return await role.save();
     }
 
     async update(dto: UpdateRoleDTO): Promise<Role> {
         const id = dto.id;
-        const name = dto.name;
-        const permissions = dto.permissions;
-        return await this.roleModel.findByIdAndUpdate(id , { name, permissions }).exec();
+        return await this.roleModel.findByIdAndUpdate(id , { ...dto }).exec();
     }
 
     async delete(id: string): Promise<Role> {
