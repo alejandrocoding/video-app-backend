@@ -1,0 +1,7 @@
+0) Como migrar datos BD - permissionsId to permissions
+1) Diferencia entre .exec() y no (por ejemplo en delete)
+2) Mirar exceptions, corregirlas
+3) Crear exception que las maneje todas
+4) Crear modulo para el home page
+5) Añadir dagguer
+6) Añadir Logging

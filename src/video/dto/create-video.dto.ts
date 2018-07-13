@@ -5,5 +5,4 @@ export class CreateVideoDTO {
   readonly posterURL: string;
   readonly duration: number;
   readonly createdBy: string;
-  readonly createdAt: Date;
 }

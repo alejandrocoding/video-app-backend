@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { RoleModule } from './roles/role.module';
 import { PermissionModule } from './permissions/permission.module';
 import { VideoModule } from './video/video.module';
+import { UserModule } from './users/user.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { VideoModule } from './video/video.module';
     RoleModule,
     PermissionModule,
     VideoModule,
+    UserModule,
   ],
   controllers: [AppController],
 })

@@ -16,7 +16,7 @@ export class RoleService {
     }
 
     async findByName(name: string): Promise<Role> {
-        return await this.roleModel.findOne({ name });
+        return await this.roleModel.findOne({ name }).exec();
     }
 
     async findAll(): Promise<Role[]> {

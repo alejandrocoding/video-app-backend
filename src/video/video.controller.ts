@@ -21,9 +21,9 @@ export class VideoController {
         return video;
     }
 
-    @Get('/name/:name')
-    async getByTitle(@Param('name') name: string) {
-        const videos = await this.videoService.findByTitle(name);
+    @Get('/title/:title')
+    async getByTitle(@Param('title') title: string) {
+        const videos = await this.videoService.findByTitle(title);
         if (videos.length === 0) {
             throw new NotFoundException();
         }
