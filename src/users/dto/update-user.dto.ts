@@ -4,4 +4,5 @@ export class UpdateUserDTO {
   readonly lastName: string;
   readonly isVerified: boolean;
   readonly roleId: string;
+  readonly videosId: string[];
 }

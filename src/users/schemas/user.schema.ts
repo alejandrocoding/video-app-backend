@@ -5,6 +5,7 @@ export const UserSchema = new mongoose.Schema({
   lastName: { type: String, require: true },
   email: { type: String, require: true, unique: true },
   isVerified: Boolean,
-  roleId: String,
+  roleId: { type: mongoose.Schema.Types.ObjectId, ref: 'Role' },
+  videosId: { type: [mongoose.Schema.Types.ObjectId], ref: 'Video' },
   createdAt: { type: Date, default: Date.now },
 });

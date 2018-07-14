@@ -33,6 +33,6 @@ export class PermissionService {
     }
 
     async delete(id: string): Promise<Permission> {
-        return await this.permissionModel.findByIdAndRemove(id);
+        return await this.permissionModel.findByIdAndRemove(id).exec();
     }
 }

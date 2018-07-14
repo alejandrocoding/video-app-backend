@@ -6,5 +6,6 @@ export interface User extends Document {
   readonly email: string;
   readonly isVerified: boolean;
   readonly roleId: string;
+  readonly videosId: string[];
   readonly createdAt: Date;
 }

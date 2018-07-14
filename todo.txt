@@ -1,6 +1,6 @@
-1) Revisar end points y añadir relaciones donde necesiten!
-2) Como migrar datos BD - permissionsId to permissions
-3) Diferencia entre .exec() y no (por ejemplo en delete)
+1) Revisar end points y añadir relaciones donde necesiten! /// DONE
+2) Como migrar datos BD - permissionsId to permissions /// NOT NOW
+3) Diferencia entre .exec() y no (por ejemplo en delete)  /// DONE
 4) Mirar exceptions, corregirlas
 5) Crear exception que las maneje todas
 6) Crear modulo para el home page

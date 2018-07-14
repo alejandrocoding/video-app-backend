@@ -34,6 +34,6 @@ export class RoleService {
     }
 
     async delete(id: string): Promise<Role> {
-        return await this.roleModel.findByIdAndRemove(id);
+        return await this.roleModel.findByIdAndRemove(id).exec();
     }
 }
