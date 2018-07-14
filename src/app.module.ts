@@ -3,18 +3,18 @@ import { MongoConnectionModule } from './core/mongo-connection.module';
 
 import { AppController } from './app.controller';
 
-import { RoleModule } from './roles/role.module';
 import { PermissionModule } from './permissions/permission.module';
-import { VideoModule } from './video/video.module';
+import { RoleModule } from './roles/role.module';
 import { UserModule } from './users/user.module';
+import { VideoModule } from './videos/video.module';
 
 @Module({
   imports: [
     MongoConnectionModule,
-    RoleModule,
     PermissionModule,
-    VideoModule,
+    RoleModule,
     UserModule,
+    VideoModule,
   ],
   controllers: [AppController],
 })
