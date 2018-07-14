@@ -5,6 +5,7 @@ import { PermissionService } from './permission.service';
 import { CreatePermissionDTO } from './dto/create-permission.dto';
 import { UpdatePermissionDTO } from './dto/update-permission.dto';
 import { AlreadyExistingException } from '../exceptions/already-existing.exception';
+import { CastErrorException } from '../exceptions/cast-error.exception';
 
 @Controller('permissions')
 export class PermissionController {
@@ -13,7 +14,11 @@ export class PermissionController {
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const permission = await this.permissionService.findById(id);
+        const permission = await this.permissionService.findById(id).catch((err) => {
+            if (err.name === 'CastError') {
+                throw new CastErrorException();
+            }
+        });
         if (!permission) {
             throw new NotFoundException();
         }
