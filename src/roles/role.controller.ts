@@ -6,7 +6,7 @@ import { CreateRoleDTO } from './dto/create-role.dto';
 import { UpdateRoleDTO } from './dto/update-role.dto';
 import { AlreadyExistingException } from '../exceptions/already-existing.exception';
 
-@Controller('role')
+@Controller('roles')
 export class RoleController {
 
     constructor(private readonly roleService: RoleService) { }

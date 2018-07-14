@@ -6,7 +6,7 @@ import { CreatePermissionDTO } from './dto/create-permission.dto';
 import { UpdatePermissionDTO } from './dto/update-permission.dto';
 import { AlreadyExistingException } from '../exceptions/already-existing.exception';
 
-@Controller('permission')
+@Controller('permissions')
 export class PermissionController {
 
     constructor(private readonly permissionService: PermissionService) { }

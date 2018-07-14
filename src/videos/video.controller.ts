@@ -7,7 +7,7 @@ import { UpdateVideoDTO } from './dto/update-video.dto';
 import { AlreadyExistingException } from '../exceptions/already-existing.exception';
 import { ValidationException } from '../exceptions/validation.exception';
 
-@Controller('video')
+@Controller('videos')
 export class VideoController {
 
     constructor(private readonly videoService: VideoService) { }

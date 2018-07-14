@@ -6,7 +6,7 @@ import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
 import { AlreadyExistingException } from '../exceptions/already-existing.exception';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
 
     constructor(private readonly userService: UserService) { }
