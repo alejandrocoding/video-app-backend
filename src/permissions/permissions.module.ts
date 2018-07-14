@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { PermissionService } from './permission.service';
-import { PermissionController } from './permission.controller';
+import { PermissionsService } from './permissions.service';
+import { PermissionsController } from './permissions.controller';
 import { PermissionSchema } from './schemas/permission.schema';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'Permission', schema: PermissionSchema }])],
-  controllers: [PermissionController],
-  providers: [PermissionService],
+  controllers: [PermissionsController],
+  providers: [PermissionsService],
 })
 export class PermissionModule {}

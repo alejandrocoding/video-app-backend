@@ -3,7 +3,7 @@ import { MongoConnectionModule } from './core/mongo-connection.module';
 
 import { AppController } from './app.controller';
 
-import { PermissionModule } from './permissions/permission.module';
+import { PermissionModule } from './permissions/permissions.module';
 import { RoleModule } from './roles/role.module';
 import { UserModule } from './users/user.module';
 import { VideoModule } from './videos/video.module';

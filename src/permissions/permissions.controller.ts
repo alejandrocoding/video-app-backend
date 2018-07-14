@@ -1,20 +1,22 @@
-import { Controller, Body, Param, Get, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Body, Param, Get, Post, Put, Delete, UseFilters } from '@nestjs/common';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 
-import { PermissionService } from './permission.service';
+import { PermissionsService } from './permissions.service';
 import { CreatePermissionDTO } from './dto/create-permission.dto';
 import { UpdatePermissionDTO } from './dto/update-permission.dto';
 import { AlreadyExistingException } from '../exceptions/already-existing.exception';
 import { CastErrorException } from '../exceptions/cast-error.exception';
+import { HttpExceptionFilter } from '../core/http-exception.filter';
 
+@UseFilters(HttpExceptionFilter)
 @Controller('permissions')
-export class PermissionController {
+export class PermissionsController {
 
-    constructor(private readonly permissionService: PermissionService) { }
+    constructor(private readonly permissionsService: PermissionsService) { }
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const permission = await this.permissionService.findById(id).catch((err) => {
+        const permission = await this.permissionsService.findById(id).catch((err) => {
             if (err.name === 'CastError') {
                 throw new CastErrorException();
             }
@@ -27,7 +29,7 @@ export class PermissionController {
 
     @Get('/name/:name')
     async getByName(@Param('name') name: string) {
-        const permission = await this.permissionService.findByName(name);
+        const permission = await this.permissionsService.findByName(name);
         if (!permission) {
             throw new NotFoundException();
         }
@@ -36,12 +38,12 @@ export class PermissionController {
 
     @Get()
     async getAll() {
-        return await this.permissionService.findAll();
+        return await this.permissionsService.findAll();
     }
 
     @Post()
     async create(@Body() dto: CreatePermissionDTO) {
-        return await this.permissionService.create(dto).catch((err) => {
+        return await this.permissionsService.create(dto).catch((err) => {
             if (err.errmsg.includes('duplicate key error')) {
                 const name = err.errmsg.match(/"(.*)"/)[0];
                 throw new AlreadyExistingException(name);
@@ -51,7 +53,7 @@ export class PermissionController {
 
     @Put()
     async update(@Body() dto: UpdatePermissionDTO) {
-        const result = await this.permissionService.update(dto).catch(() => {
+        const result = await this.permissionsService.update(dto).catch(() => {
             throw new BadRequestException();
         });
         if (!result) {
@@ -62,7 +64,7 @@ export class PermissionController {
 
     @Delete(':id')
     async delete(@Param('id') id: string) {
-        const result = await this.permissionService.delete(id).catch(() => {
+        const result = await this.permissionsService.delete(id).catch(() => {
             throw new BadRequestException();
         });
         if (!result) {

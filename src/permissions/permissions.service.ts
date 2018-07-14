@@ -7,7 +7,7 @@ import { CreatePermissionDTO } from './dto/create-permission.dto';
 import { UpdatePermissionDTO } from './dto/update-permission.dto';
 
 @Injectable()
-export class PermissionService {
+export class PermissionsService {
     constructor(@InjectModel('Permission') private readonly permissionModel: Model<Permission>) { }
 
     async findById(id: string): Promise<Permission> {
