@@ -5,9 +5,9 @@ import { PermissionsController } from './permissions.controller';
 import { PermissionsService } from './permissions.service';
 import { CreatePermissionDTO } from './dto/create-permission.dto';
 import { UpdatePermissionDTO } from './dto/update-permission.dto';
-import { FakePermission } from './mocks/fake-permission';
+import { PermissionMock } from './mocks/permission-mock';
 
-describe('PermissionsController', () => {
+describe('Permissions Controller', () => {
     let controller: PermissionsController;
     let service: PermissionsService;
 
@@ -18,7 +18,7 @@ describe('PermissionsController', () => {
                 PermissionsService,
                 {
                     provide: getModelToken('Permission'),
-                    useValue: FakePermission,
+                    useValue: PermissionMock,
                 },
             ],
         }).compile();

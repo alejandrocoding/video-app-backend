@@ -1,20 +1,20 @@
 import { Controller, Body, Param, Get, Post, Put, Delete } from '@nestjs/common';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 
-import { VideoService } from './video.service';
+import { VideosService } from './videos.service';
 import { CreateVideoDTO } from './dto/create-video.dto';
 import { UpdateVideoDTO } from './dto/update-video.dto';
 import { AlreadyExistingException } from '@exceptions/already-existing.exception';
 import { ValidationException } from '@exceptions/validation.exception';
 
 @Controller('videos')
-export class VideoController {
+export class VideosController {
 
-    constructor(private readonly videoService: VideoService) { }
+    constructor(private readonly videosService: VideosService) { }
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const video = await this.videoService.findById(id);
+        const video = await this.videosService.findById(id);
         if (!video) {
             throw new NotFoundException();
         }
@@ -23,7 +23,7 @@ export class VideoController {
 
     @Get('/title/:title')
     async getByTitle(@Param('title') title: string) {
-        const videos = await this.videoService.findByTitle(title);
+        const videos = await this.videosService.findByTitle(title);
         if (videos.length === 0) {
             throw new NotFoundException();
         }
@@ -32,12 +32,12 @@ export class VideoController {
 
     @Get()
     async getAll() {
-        return await this.videoService.findAll();
+        return await this.videosService.findAll();
     }
 
     @Post()
     async create(@Body() dto: CreateVideoDTO) {
-        return await this.videoService.create(dto).catch((err) => {
+        return await this.videosService.create(dto).catch((err) => {
             if (err.name === 'ValidationError') {
                 throw new ValidationException(err.errors);
             }
@@ -50,7 +50,7 @@ export class VideoController {
 
     @Put()
     async update(@Body() dto: UpdateVideoDTO) {
-        const result = await this.videoService.update(dto).catch((err) => {
+        const result = await this.videosService.update(dto).catch((err) => {
             throw new BadRequestException();
         });
         if (!result) {
@@ -61,7 +61,7 @@ export class VideoController {
 
     @Delete(':id')
     async delete(@Param('id') id: string) {
-        const result = await this.videoService.delete(id).catch((err) => {
+        const result = await this.videosService.delete(id).catch((err) => {
             throw new BadRequestException();
         });
         if (!result) {

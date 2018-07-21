@@ -1,42 +1,42 @@
 import { Controller, Body, Param, Get, Post, Put, Delete } from '@nestjs/common';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 
-import { RoleService } from './role.service';
-import { CreateRoleDTO } from './dto/create-role.dto';
-import { UpdateRoleDTO } from './dto/update-role.dto';
+import { UsersService } from './users.service';
+import { CreateUserDTO } from './dto/create-user.dto';
+import { UpdateUserDTO } from './dto/update-user.dto';
 import { AlreadyExistingException } from '@exceptions/already-existing.exception';
 
-@Controller('roles')
-export class RoleController {
+@Controller('users')
+export class UsersController {
 
-    constructor(private readonly roleService: RoleService) { }
+    constructor(private readonly usersService: UsersService) { }
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const role = await this.roleService.findById(id);
-        if (!role) {
+        const user = await this.usersService.findById(id);
+        if (!user) {
             throw new NotFoundException();
         }
-        return role;
+        return user;
     }
 
-    @Get('/name/:name')
-    async getByName(@Param('name') name: string) {
-        const role = await this.roleService.findByName(name);
-        if (!role) {
+    @Get('/email/:email')
+    async getByName(@Param('email') email: string) {
+        const user = await this.usersService.findByEmail(email);
+        if (!user) {
             throw new NotFoundException();
         }
-        return role;
+        return user;
     }
 
     @Get()
     async getAll() {
-        return await this.roleService.findAll();
+        return await this.usersService.findAll();
     }
 
     @Post()
-    async create(@Body() dto: CreateRoleDTO) {
-        return await this.roleService.create(dto).catch((err) => {
+    async create(@Body() dto: CreateUserDTO) {
+        return await this.usersService.create(dto).catch((err) => {
             if (err.errmsg.includes('duplicate key error')) {
                 const name = err.errmsg.match(/"(.*)"/)[0];
                 throw new AlreadyExistingException(name);
@@ -45,8 +45,8 @@ export class RoleController {
     }
 
     @Put()
-    async update(@Body() dto: UpdateRoleDTO) {
-        const result = await this.roleService.update(dto).catch((err) => {
+    async update(@Body() dto: UpdateUserDTO) {
+        const result = await this.usersService.update(dto).catch((err) => {
             throw new BadRequestException();
         });
         if (!result) {
@@ -57,7 +57,7 @@ export class RoleController {
 
     @Delete(':id')
     async delete(@Param('id') id: string) {
-        const result = await this.roleService.delete(id).catch((err) => {
+        const result = await this.usersService.delete(id).catch((err) => {
             throw new BadRequestException();
         });
         if (!result) {

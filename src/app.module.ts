@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common';
-import { MongoConnectionModule } from './core/mongo-connection.module';
+import { MongoConnectionModule } from 'core/mongo-connection.module';
 
-import { PermissionModule } from './permissions/permissions.module';
-import { RoleModule } from './roles/role.module';
-import { UserModule } from './users/user.module';
-import { VideoModule } from './videos/video.module';
+import { PermissionModule } from '@permissions/permissions.module';
+import { RolesModule } from '@roles/roles.module';
+import { UsersModule } from '@users/users.module';
+import { VideosModule } from '@videos/videos.module';
 
 @Module({
   imports: [
     MongoConnectionModule,
     PermissionModule,
-    RoleModule,
-    UserModule,
-    VideoModule,
+    RolesModule,
+    UsersModule,
+    VideosModule,
   ],
 })
 export class AppModule { }

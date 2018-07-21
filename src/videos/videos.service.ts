@@ -7,7 +7,7 @@ import { CreateVideoDTO } from './dto/create-video.dto';
 import { UpdateVideoDTO } from './dto/update-video.dto';
 
 @Injectable()
-export class VideoService {
+export class VideosService {
 
     constructor(@InjectModel('Video') private readonly videoModel: Model<Video>) { }
 
