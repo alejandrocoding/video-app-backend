@@ -4,7 +4,7 @@ import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { RoleService } from './role.service';
 import { CreateRoleDTO } from './dto/create-role.dto';
 import { UpdateRoleDTO } from './dto/update-role.dto';
-import { AlreadyExistingException } from '../exceptions/already-existing.exception';
+import { AlreadyExistingException } from '@exceptions/already-existing.exception';
 
 @Controller('roles')
 export class RoleController {

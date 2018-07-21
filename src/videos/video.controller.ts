@@ -4,8 +4,8 @@ import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { VideoService } from './video.service';
 import { CreateVideoDTO } from './dto/create-video.dto';
 import { UpdateVideoDTO } from './dto/update-video.dto';
-import { AlreadyExistingException } from '../exceptions/already-existing.exception';
-import { ValidationException } from '../exceptions/validation.exception';
+import { AlreadyExistingException } from '@exceptions/already-existing.exception';
+import { ValidationException } from '@exceptions/validation.exception';
 
 @Controller('videos')
 export class VideoController {

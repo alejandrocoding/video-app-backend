@@ -1,14 +1,12 @@
-import { Controller, Body, Param, Get, Post, Put, Delete, UseFilters } from '@nestjs/common';
+import { Controller, Body, Param, Get, Post, Put, Delete } from '@nestjs/common';
 import { NotFoundException, BadRequestException } from '@nestjs/common';
 
 import { PermissionsService } from './permissions.service';
 import { CreatePermissionDTO } from './dto/create-permission.dto';
 import { UpdatePermissionDTO } from './dto/update-permission.dto';
-import { AlreadyExistingException } from '../exceptions/already-existing.exception';
-import { CastErrorException } from '../exceptions/cast-error.exception';
-import { HttpExceptionFilter } from '../core/http-exception.filter';
+import { AlreadyExistingException } from '@exceptions/already-existing.exception';
+import { CastErrorException } from '@exceptions/cast-error.exception';
 
-@UseFilters(HttpExceptionFilter)
 @Controller('permissions')
 export class PermissionsController {
 
@@ -16,7 +14,7 @@ export class PermissionsController {
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const permission = await this.permissionsService.findById(id).catch((err) => {
+        const permission = await this.permissionsService.getById(id).catch((err) => {
             if (err.name === 'CastError') {
                 throw new CastErrorException();
             }
@@ -29,7 +27,7 @@ export class PermissionsController {
 
     @Get('/name/:name')
     async getByName(@Param('name') name: string) {
-        const permission = await this.permissionsService.findByName(name);
+        const permission = await this.permissionsService.getByName(name);
         if (!permission) {
             throw new NotFoundException();
         }
@@ -38,7 +36,7 @@ export class PermissionsController {
 
     @Get()
     async getAll() {
-        return await this.permissionsService.findAll();
+        return await this.permissionsService.getAll();
     }
 
     @Post()

@@ -57,6 +57,14 @@
       "json",
       "ts"
     ],
+    "moduleNameMapper": {
+      "@db/(.*)": "<rootDir>/core/database/$1",
+      "@exceptions/(.*)": "<rootDir>/core/exceptions/$1",
+      "@permissions/(.*)": "<rootDir>/permissions/$1",
+      "@roles/(.*)": "<rootDir>/roles/$1",
+      "@users/(.*)": "<rootDir>/users/$1",
+      "@videos/(.*)": "<rootDir>/videos/$1"
+    },
     "rootDir": "src",
     "testRegex": ".spec.ts$",
     "transform": {

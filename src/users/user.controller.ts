@@ -4,7 +4,7 @@ import { NotFoundException, BadRequestException } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
-import { AlreadyExistingException } from '../exceptions/already-existing.exception';
+import { AlreadyExistingException } from '@exceptions/already-existing.exception';
 
 @Controller('users')
 export class UserController {

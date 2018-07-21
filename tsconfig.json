@@ -12,7 +12,15 @@
     "sourceMap": true,
     "allowJs": true,
     "outDir": "./dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "@db/*": ["./core/database/*"],
+      "@exceptions/*": ["./core/exceptions/*"],
+      "@permissions/*": ["./permissions/*"],
+      "@roles/*": ["./roles/*"],
+      "@users/*": ["./users/*"],
+      "@videos/*": ["./videos/*"],
+    }
   },
   "include": [
     "src/**/*"
