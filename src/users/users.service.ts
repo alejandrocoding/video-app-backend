@@ -11,15 +11,15 @@ export class UsersService {
 
     constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
 
-    async findById(id: string): Promise<User> {
+    async getById(id: string): Promise<User> {
         return await this.userModel.findById(id).exec();
     }
 
-    async findByEmail(email: string): Promise<User> {
+    async getByEmail(email: string): Promise<User> {
         return await this.userModel.findOne({ email }).exec();
     }
 
-    async findAll(): Promise<User[]> {
+    async getAll(): Promise<User[]> {
         return await this.userModel.find().exec();
     }
 

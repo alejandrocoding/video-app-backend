@@ -11,15 +11,15 @@ export class VideosService {
 
     constructor(@InjectModel('Video') private readonly videoModel: Model<Video>) { }
 
-    async findById(id: string): Promise<Video> {
+    async getById(id: string): Promise<Video> {
         return await this.videoModel.findById(id).exec();
     }
 
-    async findByTitle(title: string): Promise<Video[]> {
+    async getByTitle(title: string): Promise<Video[]> {
         return await this.videoModel.find({ title }).exec();
     }
 
-    async findAll(): Promise<Video[]> {
+    async getAll(): Promise<Video[]> {
         return await this.videoModel.find().exec();
     }
 

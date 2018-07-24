@@ -13,7 +13,7 @@ export class UsersController {
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const user = await this.usersService.findById(id);
+        const user = await this.usersService.getById(id);
         if (!user) {
             throw new NotFoundException();
         }
@@ -22,7 +22,7 @@ export class UsersController {
 
     @Get('/email/:email')
     async getByName(@Param('email') email: string) {
-        const user = await this.usersService.findByEmail(email);
+        const user = await this.usersService.getByEmail(email);
         if (!user) {
             throw new NotFoundException();
         }
@@ -31,7 +31,7 @@ export class UsersController {
 
     @Get()
     async getAll() {
-        return await this.usersService.findAll();
+        return await this.usersService.getAll();
     }
 
     @Post()

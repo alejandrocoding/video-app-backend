@@ -11,15 +11,15 @@ export class RolesService {
 
     constructor(@InjectModel('Role') private readonly roleModel: Model<Role>) { }
 
-    async findById(id: string): Promise<Role> {
+    async getById(id: string): Promise<Role> {
         return await this.roleModel.findById(id).exec();
     }
 
-    async findByName(name: string): Promise<Role> {
+    async getByName(name: string): Promise<Role> {
         return await this.roleModel.findOne({ name }).exec();
     }
 
-    async findAll(): Promise<Role[]> {
+    async getAll(): Promise<Role[]> {
         return await this.roleModel.find().exec();
     }
 

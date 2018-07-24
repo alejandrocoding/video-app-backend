@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { MongoConnectionModule } from 'core/mongo-connection.module';
+import { MongoConnectionModule } from './core/mongo-connection.module';
 
 import { PermissionModule } from '@permissions/permissions.module';
 import { RolesModule } from '@roles/roles.module';

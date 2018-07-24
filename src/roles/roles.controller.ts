@@ -13,7 +13,7 @@ export class RolesController {
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const role = await this.rolesService.findById(id);
+        const role = await this.rolesService.getById(id);
         if (!role) {
             throw new NotFoundException();
         }
@@ -22,7 +22,7 @@ export class RolesController {
 
     @Get('/name/:name')
     async getByName(@Param('name') name: string) {
-        const role = await this.rolesService.findByName(name);
+        const role = await this.rolesService.getByName(name);
         if (!role) {
             throw new NotFoundException();
         }
@@ -31,7 +31,7 @@ export class RolesController {
 
     @Get()
     async getAll() {
-        return await this.rolesService.findAll();
+        return await this.rolesService.getAll();
     }
 
     @Post()

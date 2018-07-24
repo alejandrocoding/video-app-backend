@@ -14,7 +14,7 @@ export class VideosController {
 
     @Get(':id')
     async getById(@Param('id') id: string) {
-        const video = await this.videosService.findById(id);
+        const video = await this.videosService.getById(id);
         if (!video) {
             throw new NotFoundException();
         }
@@ -23,7 +23,7 @@ export class VideosController {
 
     @Get('/title/:title')
     async getByTitle(@Param('title') title: string) {
-        const videos = await this.videosService.findByTitle(title);
+        const videos = await this.videosService.getByTitle(title);
         if (videos.length === 0) {
             throw new NotFoundException();
         }
@@ -32,7 +32,7 @@ export class VideosController {
 
     @Get()
     async getAll() {
-        return await this.videosService.findAll();
+        return await this.videosService.getAll();
     }
 
     @Post()
