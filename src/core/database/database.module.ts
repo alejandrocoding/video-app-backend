@@ -1,8 +1,14 @@
 import { Module } from '@nestjs/common';
-import { databaseProviders } from './database.providers';
+import { MongooseModule } from '@nestjs/mongoose';
+
+const host = process.env.HOST || 'ds129051.mlab.com';
+const port = Number(process.env.PORT) || 29051;
+const username = process.env.USERDB || 'alexdb1';
+const password = process.env.PASSDB || 'alexdb1';
+const database = process.env.DBNAME || 'videoapp';
 
 @Module({
-  providers: [...databaseProviders],
-  exports: [...databaseProviders],
+    imports: [MongooseModule.forRoot(`mongodb://${username}:${password}@${host}:${port}/${database}`)],
+    exports: [DatabaseModule],
 })
-export class DatabaseModule {}
+export class DatabaseModule { }

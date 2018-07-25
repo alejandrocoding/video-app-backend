@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { MongoConnectionModule } from './core/mongo-connection.module';
+import { DatabaseModule } from './core/database/database.module';
 
 import { PermissionModule } from '@permissions/permissions.module';
 import { RolesModule } from '@roles/roles.module';
@@ -8,7 +8,7 @@ import { VideosModule } from '@videos/videos.module';
 
 @Module({
   imports: [
-    MongoConnectionModule,
+    DatabaseModule,
     PermissionModule,
     RolesModule,
     UsersModule,
