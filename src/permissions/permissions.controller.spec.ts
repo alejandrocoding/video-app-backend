@@ -64,10 +64,11 @@ describe('Permissions Controller', () => {
 
     describe('update', () => {
         it('should update a permission', async () => {
-            const fake: UpdatePermissionDTO = { id: '1', name: 'PermissionTest' };
+            const fake: UpdatePermissionDTO = { name: 'PermissionTest' };
+            const id = '1';
             const result = { name: 'PermissionTest' };
             jest.spyOn(service, 'update').mockImplementation(() => Promise.resolve(result));
-            expect(await controller.update(fake)).toBe(result);
+            expect(await controller.update(id, fake)).toBe(result);
         });
     });
 

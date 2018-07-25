@@ -28,8 +28,7 @@ export class PermissionsService {
         return await role.save();
     }
 
-    async update(dto: UpdatePermissionDTO): Promise<Permission> {
-        const id = dto.id;
+    async update(id: string, dto: UpdatePermissionDTO): Promise<Permission> {
         return await this.permissionModel.findByIdAndUpdate(id, { ...dto }).exec();
     }
 

@@ -9,7 +9,7 @@ import { UpdateVideoDTO } from './dto/update-video.dto';
 @Injectable()
 export class VideosService {
 
-    constructor(@InjectModel('Video') private readonly videoModel: Model<Video>) { }
+    constructor( @InjectModel('Video') private readonly videoModel: Model<Video>) { }
 
     async getById(id: string): Promise<Video> {
         return await this.videoModel.findById(id).exec();
@@ -28,9 +28,8 @@ export class VideosService {
         return await video.save();
     }
 
-    async update(dto: UpdateVideoDTO): Promise<Video> {
-        const id = dto.id;
-        return await this.videoModel.findByIdAndUpdate(id , { ...dto }).exec();
+    async update(id: string, dto: UpdateVideoDTO): Promise<Video> {
+        return await this.videoModel.findByIdAndUpdate(id, { ...dto }).exec();
     }
 
     async delete(id: string): Promise<Video> {

@@ -50,8 +50,8 @@ export class PermissionsController {
     }
 
     @Put()
-    async update(@Body() dto: UpdatePermissionDTO) {
-        const result = await this.permissionsService.update(dto).catch(() => {
+    async update(@Param('id') id: string, @Body() dto: UpdatePermissionDTO) {
+        const result = await this.permissionsService.update(id, dto).catch(() => {
             throw new BadRequestException();
         });
         if (!result) {

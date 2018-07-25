@@ -63,16 +63,16 @@ describe('Videos Controller', () => {
     describe('update', () => {
         it('should update a video', async () => {
             const fake: UpdateVideoDTO = {
-                id: '1',
                 title: 'Video',
                 description: 'Test',
                 URL: '',
                 posterURL: '',
                 duration: 1,
             };
+            const id = '1';
             const result = { name: 'VideoTest' };
             jest.spyOn(service, 'update').mockImplementation(() => Promise.resolve(result));
-            expect(await controller.update(fake)).toBe(result);
+            expect(await controller.update(id, fake)).toBe(result);
         });
     });
 

@@ -49,8 +49,8 @@ export class VideosController {
     }
 
     @Put()
-    async update(@Body() dto: UpdateVideoDTO) {
-        const result = await this.videosService.update(dto).catch((err) => {
+    async update(@Param('id') id: string, @Body() dto: UpdateVideoDTO) {
+        const result = await this.videosService.update(id, dto).catch((err) => {
             throw new BadRequestException();
         });
         if (!result) {

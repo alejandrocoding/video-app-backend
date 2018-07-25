@@ -62,13 +62,13 @@ describe('Users Controller', () => {
     describe('update', () => {
         it('should update a user', async () => {
             const fake: UpdateUserDTO = {
-                id: '1',
                 firstName: 'User',
                 lastName: 'Test',
                 isVerified: true,
                 roleId: '1',
                 videosId: [],
             };
+            const id = '1';
             const result = { name: 'UserTest' };
             jest.spyOn(service, 'update').mockImplementation(() => Promise.resolve(result));
             expect(await controller.update(fake)).toBe(result);
