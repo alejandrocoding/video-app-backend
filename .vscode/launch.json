@@ -8,6 +8,17 @@
             "type": "node",
             "request": "launch",
             "name": "Nest Debug",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Nest Debug (NOT PATHS)",
             "protocol": "inspector",
             "sourceMaps": true,
             "stopOnEntry": false,

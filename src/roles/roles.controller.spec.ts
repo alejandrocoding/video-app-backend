@@ -64,10 +64,11 @@ describe('Roles Controller', () => {
 
   describe('update', () => {
     it('should update a role', async () => {
-      const fake: UpdateRoleDTO = { id: '1', name: 'RoleTest', permissionsId: ['1'] };
+      const fake: UpdateRoleDTO = { name: 'RoleTest', permissionsId: ['1'] };
+      const id = '1';
       const result = { name: 'RoleTest' };
       jest.spyOn(service, 'update').mockImplementation(() => Promise.resolve(result));
-      expect(await controller.update(fake)).toBe(result);
+      expect(await controller.update(id, fake)).toBe(result);
     });
   });
 

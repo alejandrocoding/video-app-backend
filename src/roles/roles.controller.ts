@@ -44,7 +44,7 @@ export class RolesController {
         });
     }
 
-    @Put()
+    @Put(':id')
     async update(@Param('id') id: string, @Body() dto: UpdateRoleDTO) {
         const result = await this.rolesService.update(id, dto).catch((err) => {
             throw new BadRequestException();

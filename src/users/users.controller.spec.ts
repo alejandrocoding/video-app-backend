@@ -71,7 +71,7 @@ describe('Users Controller', () => {
             const id = '1';
             const result = { name: 'UserTest' };
             jest.spyOn(service, 'update').mockImplementation(() => Promise.resolve(result));
-            expect(await controller.update(fake)).toBe(result);
+            expect(await controller.update(id, fake)).toBe(result);
         });
     });
 

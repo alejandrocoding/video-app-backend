@@ -44,7 +44,7 @@ export class UsersController {
         });
     }
 
-    @Put()
+    @Put(':id')
     async update(@Param('id') id: string, @Body() dto: UpdateUserDTO) {
         const result = await this.usersService.update(id, dto).catch((err) => {
             throw new BadRequestException();
