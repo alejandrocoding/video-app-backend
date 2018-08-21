@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { setIDSchema } from '@utils/id-parser';
 
 export const UserSchema = new mongoose.Schema({
   firstName: { type: String, require: true },
@@ -7,5 +8,6 @@ export const UserSchema = new mongoose.Schema({
   isVerified: Boolean,
   roleId: { type: mongoose.Schema.Types.ObjectId, ref: 'Role' },
   videosId: { type: [mongoose.Schema.Types.ObjectId], ref: 'Video' },
-  createdAt: { type: Date, default: Date.now },
-});
+}, { versionKey: false, timestamps: true });
+
+setIDSchema(UserSchema);
