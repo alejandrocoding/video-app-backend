@@ -8,4 +8,5 @@ export interface User extends Document {
   readonly roleId: string;
   readonly videosId: string[];
   readonly createdAt: Date;
+  readonly updatedAt: Date;
 }

@@ -5,4 +5,5 @@ export interface Role extends Document {
   readonly permissionsId: string[];
   readonly createdBy: string;
   readonly createdAt: Date;
+  readonly updatedAt: Date;
 }

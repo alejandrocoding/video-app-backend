@@ -8,4 +8,5 @@ export interface Video extends Document {
   readonly duration: number;
   readonly createdBy: string;
   readonly createdAt: Date;
+  readonly updatedAt: Date;
 }
