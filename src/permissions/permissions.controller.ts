@@ -42,9 +42,12 @@ export class PermissionsController {
     @Post()
     async create(@Body() dto: CreatePermissionDTO) {
         return await this.permissionsService.create(dto).catch((err) => {
-            if (err.errmsg.includes('duplicate key error')) {
+            if (err.message.includes('duplicate key error')) {
                 const name = err.errmsg.match(/"(.*)"/)[0];
                 throw new AlreadyExistingException(name);
+            }
+            if (err.message.includes('target') && err.message.includes('validation failed')) {
+                throw new BadRequestException('Target Field is not as expected');
             }
         });
     }
