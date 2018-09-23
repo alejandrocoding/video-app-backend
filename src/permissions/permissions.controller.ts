@@ -46,8 +46,8 @@ export class PermissionsController {
                 const name = err.errmsg.match(/"(.*)"/)[0];
                 throw new AlreadyExistingException(name);
             }
-            if (err.message.includes('target') && err.message.includes('validation failed')) {
-                throw new BadRequestException('Target Field is not as expected');
+            if (err.message.includes('type') && err.message.includes('validation failed')) {
+                throw new BadRequestException('Type Field is not as expected');
             }
         });
     }

@@ -1,4 +1,4 @@
-export enum PermissionTarget {
+export enum PermissionType {
     ReadOnlyVideos = 'ROV',
     FullAccessVideos= 'FAV',
     ManageUsers= 'MU',

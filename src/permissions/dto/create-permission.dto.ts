@@ -1,6 +1,6 @@
-import { PermissionTarget } from '../enums/permission-target.enum';
+import { PermissionType } from '../enums/permission-type.enum';
 
 export class CreatePermissionDTO {
     readonly name: string;
-    readonly target: PermissionTarget;
+    readonly type: PermissionType;
   }
