@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Role } from './interfaces/role.interface';
 import { CreateRoleDTO } from './dto/create-role.dto';
 import { UpdateRoleDTO } from './dto/update-role.dto';
+import { UpdateRolePermissionsDTO } from '@roles/dto/update-role-permissions.dto';
 
 @Injectable()
 export class RolesService {
@@ -29,7 +30,11 @@ export class RolesService {
     }
 
     async update(id: string, dto: UpdateRoleDTO): Promise<Role> {
-        return await this.roleModel.findByIdAndUpdate(id , { ...dto }).exec();
+        return await this.roleModel.findByIdAndUpdate(id, { ...dto }).exec();
+    }
+
+    async updatePermissions(id: string, dto: UpdateRolePermissionsDTO): Promise<Role> {
+        return await this.roleModel.findByIdAndUpdate(id, { ...dto }, { runValidators: true }).exec();
     }
 
     async delete(id: string): Promise<Role> {
